@@ -17,10 +17,13 @@ export class HttpService {
   public put(apiurl: string, body: any) {
     return this.http.post(`${this.url}${apiurl}`, body);
   }
-  public get(apiurl: string, body: any) {
+  public get(apiurl: string) {
     return this.http.get(`${this.url}${apiurl}`);
   }
-  public delete(apiurl: string, body: any) {
+  public delete(apiurl: string) {
     return this.http.delete(`${this.url}${apiurl}`);
+  }
+  public getAnother(apiurl: string) {
+    return this.http.get(`${apiurl}`);
   }
 }
