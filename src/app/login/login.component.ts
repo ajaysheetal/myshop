@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UtilitiesService } from '../core/service/utilities.service';
 import { LoginService } from './login.service';
 
@@ -13,7 +14,8 @@ export class LoginComponent implements OnInit {
   disabled: boolean = false;
   constructor(
     private readonly loginService: LoginService,
-    private readonly utilitiesService: UtilitiesService
+    private readonly utilitiesService: UtilitiesService,
+    private router: Router
   ) {
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -29,7 +31,9 @@ export class LoginComponent implements OnInit {
     this.loginService.login(this.loginForm.value).subscribe(
       (res) => {
         if (res) {
-          this.utilitiesService.successToastMessage('User Login');
+          this.utilitiesService.successToastMessage('User Login Successfully');
+          window.localStorage.setItem('user', JSON.stringify(res));
+          this.router.navigate(['/movies-list']);
         }
       },
       (err) => {
