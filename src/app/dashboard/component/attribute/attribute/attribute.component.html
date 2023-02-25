@@ -1,0 +1,87 @@
+<section class="container">
+  <mat-card class="card">
+    <mat-card-header><h4>Attribute</h4></mat-card-header>
+
+    <mat-card-content>
+      <form
+        class="example-form"
+        #attributeForm="ngForm"
+        (ngSubmit)="saveAttribute(attributeForm.value)"
+      >
+        <mat-form-field class="example-full-width">
+          <mat-label>Title</mat-label>
+          <input
+            type="text"
+            matInput
+            placeholder="Enter Name"
+            name="name"
+            [(ngModel)]="attribute.name"
+            required
+          />
+        </mat-form-field>
+        <div class="row">
+          <div class="col-md-5">
+            <mat-form-field class="example-full-width">
+              <mat-label>Add Value for Attribute</mat-label>
+              <input
+                type="text"
+                matInput
+                placeholder="Enter value"
+                name="value"
+                [(ngModel)]="attribute.value"
+                #attributeValue
+              />
+            </mat-form-field>
+            <button
+              mat-flat-button
+              color="primary"
+              (click)="addAttributeValue(attributeValue.value)"
+              type="button"
+            >
+              Add Value
+            </button>
+          </div>
+          <div class="col-md-5">
+            <mat-list role="list">
+              <b>List of Added Value</b>
+              <div
+                *ngFor="let attributelist of attributeValueArray; let i = index"
+                class="d-flex flex-column"
+              >
+                <mat-list-item role="listitem"
+                  >{{ attributelist }}
+                </mat-list-item>
+                <button
+                  mat-mini-fab
+                  color="warn"
+                  (click)="deleteAttributeValue(i)"
+                  type="button"
+                >
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+            </mat-list>
+          </div>
+          <div class="col-md-2"></div>
+        </div>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Status</mat-label>
+          <mat-select name="status" [(ngModel)]="attribute.status" required>
+            <mat-option [value]="true">Active</mat-option>
+            <mat-option [value]="false">In Active</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <button
+          mat-flat-button
+          color="primary"
+          type="submit"
+          [disabled]="!attributeForm.valid"
+        >
+          Save
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</section>

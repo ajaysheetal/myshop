@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
+import { NgModule } from '@angular/core';
 
 const routes: Routes = [
   {
@@ -7,22 +8,21 @@ const routes: Routes = [
     loadChildren: () =>
       import('./login/login.module').then((x) => x.LoginModule),
   },
+
   {
-    path: 'movies-list',
+    path: 'dashboard',
     loadChildren: () =>
-      import('./movies-list/movies-list.module').then(
-        (x) => x.MoviesListModule
-      ),
+      import('./dashboard/dashboard.module').then((x) => x.DashboardModule),
   },
   {
     path: '',
     pathMatch: 'full',
     redirectTo: '/login',
   },
-  {
-    path: '**',
-    redirectTo: '/login',
-  },
+  // {
+  //   path: '**',
+  //   redirectTo: '/login',
+  // },
 ];
 
 @NgModule({

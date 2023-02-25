@@ -30,14 +30,12 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.loginService.login(this.loginForm.value).subscribe(
       (res) => {
-        if (res) {
-          this.utilitiesService.successToastMessage('User Login Successfully');
-          window.localStorage.setItem('user', JSON.stringify(res));
-          this.router.navigate(['/movies-list']);
-        }
+        this.utilitiesService.successToastMessage('User Login Successfully');
+        localStorage.setItem('user', JSON.stringify(res));
+        this.router.navigate(['/dashboard']);
       },
       (err) => {
-        this.utilitiesService.errorHandlerMessgae(err.error.msg);
+        this.utilitiesService.errorHandlerMessgae(err?.error?.msg);
       }
     );
   }

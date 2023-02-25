@@ -1,11 +1,21 @@
-html,
-body {
-  height: 100%;
+:root {
+  --background-color: #fcfcfc;
+  --menu-padding: 20px;
+  --card-padding: 20px;
+  --card-margin: 20px;
+  --container-padding: 40px;
+  --container-margin: 10%;
+  --form-padding: 100px;
 }
-body {
+* {
+  padding: 0;
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  box-sizing: border-box;
 }
+
+body {
+}
+
 .green-snackbar {
   background-color: green;
   color: white;
@@ -13,4 +23,27 @@ body {
 .red-snackbar {
   background-color: red;
   color: white;
+}
+
+.card {
+  width: 80%;
+  height: auto;
+  padding: var(--card-padding);
+}
+.container {
+  margin: var(--container-margin) !important;
+  min-width: 560px !important;
+}
+
+table {
+  width: 100%;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }

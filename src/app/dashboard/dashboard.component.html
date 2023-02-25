@@ -1,0 +1,129 @@
+<mat-toolbar>
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+    (click)="drawer.toggle()"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>My Shop</span>
+  <span class="example-spacer"></span>
+  <button
+    mat-icon-button
+    class="example-icon favorite-icon"
+    aria-label="Example icon-button with heart icon"
+  >
+    <mat-icon>favorite</mat-icon>
+  </button>
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with share icon"
+  >
+    <mat-icon>share</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <mat-accordion class="example-headers-align" multi>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title> Category </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-list role="list">
+          <mat-list-item
+            role="listitem"
+            [routerLink]="['category/create']"
+            routerLinkActive="active"
+            (click)="drawer.toggle()"
+            >Add Category</mat-list-item
+          >
+          <mat-list-item
+            role="listitem"
+            [routerLink]="['category/list']"
+            routerLinkActive="active"
+            (click)="drawer.toggle()"
+            >list Category</mat-list-item
+          >
+        </mat-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion class="example-headers-align" multi>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title> Sub Category </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-list role="list">
+          <mat-list-item
+            role="listitem"
+            [routerLink]="['sub-category/create']"
+            routerLinkActive="active"
+            (click)="drawer.toggle()"
+            >Add Sub-Category</mat-list-item
+          >
+          <mat-list-item
+            role="listitem"
+            [routerLink]="['sub-category/list']"
+            routerLinkActive="active"
+            (click)="drawer.toggle()"
+            >list Sub-Category</mat-list-item
+          >
+        </mat-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion class="example-headers-align" multi>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title> Attribute </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-list role="list">
+          <mat-list-item
+            role="listitem"
+            [routerLink]="['attribute/create']"
+            routerLinkActive="active"
+            (click)="drawer.toggle()"
+            >Add Attribute</mat-list-item
+          >
+          <mat-list-item
+            role="listitem"
+            [routerLink]="['attribute/list']"
+            routerLinkActive="active"
+            (click)="drawer.toggle()"
+            >list Attribute</mat-list-item
+          >
+        </mat-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion class="example-headers-align" multi>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title> Product </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-list role="list">
+          <mat-list-item
+            role="listitem"
+            [routerLink]="['product/create']"
+            routerLinkActive="active"
+            (click)="drawer.toggle()"
+            >Add Product</mat-list-item
+          >
+          <mat-list-item
+            role="listitem"
+            [routerLink]="['product/list']"
+            routerLinkActive="active"
+            (click)="drawer.toggle()"
+            >list Product</mat-list-item
+          >
+        </mat-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <router-outlet></router-outlet>
+  </div>
+</mat-drawer-container>

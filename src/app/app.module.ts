@@ -1,12 +1,12 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BrowserModule } from '@angular/platform-browser';
 import { InterceptInterceptor } from './core/service/intercept.interceptor';
+import { MatModuleModule } from './mat-module/mat-module.module';
+import { NgModule } from '@angular/core';
 
 @NgModule({
   declarations: [AppComponent],
@@ -14,12 +14,19 @@ import { InterceptInterceptor } from './core/service/intercept.interceptor';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatSnackBarModule,
     HttpClientModule,
+    MatModuleModule,
   ],
+  exports: [HttpClientModule],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: InterceptInterceptor, multi: true },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptInterceptor,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  constructor() {}
+}

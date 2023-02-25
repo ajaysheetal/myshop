@@ -14,16 +14,14 @@ export class HttpService {
   public post(apiurl: string, body: any) {
     return this.http.post(`${this.url}${apiurl}`, body);
   }
+
   public put(apiurl: string, body: any) {
-    return this.http.post(`${this.url}${apiurl}`, body);
+    return this.http.put(`${this.url}${apiurl}`, body);
   }
-  public get(apiurl: string) {
-    return this.http.get(`${this.url}${apiurl}`);
+  public get(apiurl: string, optional: any) {
+    return this.http.get(`${this.url}${apiurl}`, optional);
   }
   public delete(apiurl: string) {
     return this.http.delete(`${this.url}${apiurl}`);
-  }
-  public getAnother(apiurl: string) {
-    return this.http.get(`${apiurl}`);
   }
 }

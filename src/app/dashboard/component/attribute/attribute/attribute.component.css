@@ -1,0 +1,17 @@
+.example-container {
+  width: 100%;
+  min-height: 93vh;
+  background: transparent;
+  margin-top: -3px;
+}
+
+.mat-drawer-content {
+  margin-right: 380px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  padding-inline: var(--form-padding);
+  justify-content: center;
+  gap: 50px;
+}

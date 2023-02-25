@@ -1,0 +1,67 @@
+<section class="container">
+  <mat-card class="card">
+    <mat-card-header><h4>Sub-Category</h4></mat-card-header>
+
+    <mat-card-content>
+      <form
+        class="example-form"
+        #categoryForm="ngForm"
+        (ngSubmit)="saveCategory(categoryForm.value)"
+      >
+        <mat-form-field appearance="fill">
+          <mat-label>Category</mat-label>
+          <mat-select
+            name="categoryId"
+            [(ngModel)]="subcategory.categoryId"
+            required
+          >
+            <mat-option
+              *ngFor="let category of CategoryList.data"
+              [value]="category._id"
+              >{{ category.title }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Title</mat-label>
+          <input
+            type="text"
+            matInput
+            placeholder="Enter Title"
+            name="title"
+            [(ngModel)]="subcategory.title"
+            required
+          />
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Description</mat-label>
+          <textarea
+            matInput
+            name="description"
+            [(ngModel)]="subcategory.description"
+            required
+          ></textarea>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Status</mat-label>
+          <mat-select name="status" [(ngModel)]="subcategory.status" required>
+            <mat-option [value]="true">Active</mat-option>
+            <mat-option [value]="false">In Active</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <button
+          mat-flat-button
+          color="primary"
+          type="submit"
+          [disabled]="!categoryForm.valid"
+        >
+          Save
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</section>

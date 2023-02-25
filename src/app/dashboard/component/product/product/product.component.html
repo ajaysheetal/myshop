@@ -1,0 +1,101 @@
+<section class="container">
+  <mat-card class="card">
+    <mat-card-header><h4>Product</h4></mat-card-header>
+
+    <mat-card-content>
+      <form
+        class="example-form"
+        #attributeForm="ngForm"
+        (ngSubmit)="saveProduct(attributeForm.value)"
+      >
+        <div class="row">
+          <div class="col-md-6">
+            <mat-form-field appearance="fill">
+              <mat-label>Category</mat-label>
+              <mat-select
+                name="categoryId"
+                required
+                (selectionChange)="getSubCatgory($event)"
+              >
+                <mat-option
+                  *ngFor="let category of CategoryList.data"
+                  [value]="category._id"
+                  >{{ category.title }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field appearance="fill">
+              <mat-label>Sub Category</mat-label>
+              <mat-select name="subcategoryId" required>
+                <mat-option
+                  *ngFor="let category of SubCategoryList"
+                  [value]="category._id"
+                  >{{ category.title }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">name</div>
+
+          <div class="col-md-6">short Desc</div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-8">Long Desc</div>
+
+          <div class="col-md-4">Upload By file</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">attribute</div>
+
+          <div class="col-md-4">Regular Price</div>
+
+          <div class="col-md-4">SellingPrice</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">upload</div>
+
+          <div class="col-md-8">Gallary</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Status</div>
+
+          <div class="col-md-8">Gallary</div>
+        </div>
+
+        <!-- <mat-form-field class="example-full-width">
+          <mat-label>Title</mat-label>
+          <input
+            type="text"
+            matInput
+            placeholder="Enter Name"
+            name="name"
+            required
+          />
+        </mat-form-field> -->
+
+        <!-- <mat-form-field appearance="fill">
+          <mat-label>Status</mat-label>
+          <mat-select name="status" required>
+            <mat-option [value]="true">Active</mat-option>
+            <mat-option [value]="false">In Active</mat-option>
+          </mat-select>
+        </mat-form-field> -->
+
+        <button
+          mat-flat-button
+          color="primary"
+          type="submit"
+          [disabled]="!attributeForm.valid"
+        >
+          Save
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</section>
